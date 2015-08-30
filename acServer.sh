@@ -1,8 +1,8 @@
 #/bin/bash
-ASSETTO_DIR="/home/assettocorsa/assetto_corsa"
+ASSETTO_DIR="/home/assettocorsa/steam/steamapps/common/Assetto Corsa Dedicated Server/"
 PIDFILE=/home/assettocorsa/acServer.pid
 LOGFILE=/home/assettocorsa/acServer.log
-DAEMON=$ASSETTO_DIR/acServer
+DAEMON="$ASSETTO_DIR/acServer"
 
 
 case $1 in
@@ -16,10 +16,10 @@ case $1 in
 		                  --name acServer  \
 		                  --make-pidfile \
 		                  --pidfile $PIDFILE \
-		                  --chdir $ASSETTO_DIR \
+		                  --chdir "$ASSETTO_DIR" \
 		                  --chuid assettocorsa \
 		                  --startas /bin/bash \
-		                  -- -c "exec $ASSETTO_DIR/acServer &> $LOGFILE"
+		                  -- -c "exec \"$ASSETTO_DIR/acServer\" &> $LOGFILE"
 
 		if [ $? -eq 0 ] ; then
 		   echo "Server Started"
